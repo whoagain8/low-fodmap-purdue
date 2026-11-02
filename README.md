@@ -1,4 +1,4 @@
-# low-fodmap-purdue
+# Low-FODMAP at Purdue
 
 A Java command-line tool that finds low-FODMAP foods at Purdue's dining courts.
 
