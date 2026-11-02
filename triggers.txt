@@ -1,3 +1,49 @@
+garlic
+onion
+shallot
+leek
+wheat
+rye
+barley
+semolina
+couscous
+inulin
+chicory root
+fructooligosaccharides
+kidney beans
+black beans
+baked beans
+chickpeas
+lentils
+hummus
+cashew
+pistachio
+milk
+lactose
+ice cream
+yogurt
+ricotta
+cottage cheese
 apple
-refined wheat flour
-
+pear
+mango
+watermelon
+cherries
+peach
+plum
+nectarine
+apricot
+blackberries
+prunes
+honey
+high fructose corn syrup
+agave
+asparagus
+artichoke
+cauliflower
+mushroom
+sorbitol
+mannitol
+xylitol
+maltitol
+isomalt
