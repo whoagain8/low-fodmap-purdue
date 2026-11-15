@@ -28,7 +28,7 @@ Version 1.0 will:
 
 ## Tech Stack
 
-- **Language:** Java
+- **Language:** Java (Version 25 or Newer Required)
 - **Libraries/Tools:** `java.net.http` (HTTP requests), Gson (JSON parsing), `java.time` (dates)
 - **Data Storage:** `triggers.txt`, a text file of high-FODMAP ingredient keywords, one per line
 - **Data Source:** Purdue Dining API
