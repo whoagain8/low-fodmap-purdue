@@ -20,8 +20,11 @@ public void main() {
         IO.println("Unable to connect with API");
         return;
     }
-    
-    System.out.println(response.statusCode());
+
+    if (response.statusCode() != 200) {
+        IO.println("Status code: " + response.statusCode());
+        return;
+    }
     
     JsonObject root = JsonParser.parseString(response.body()).getAsJsonObject();
     JsonArray meals = root.getAsJsonArray("Meals");
