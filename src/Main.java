@@ -29,23 +29,44 @@ public void main() {
     JsonObject root = JsonParser.parseString(response.body()).getAsJsonObject();
     JsonArray meals = root.getAsJsonArray("Meals");
 
-    for (JsonElement m : meals) {
+    for (JsonElement m : meals) {  // for each meal
         JsonObject meal = m.getAsJsonObject();
-        IO.println(meal.get("Name").getAsString());
         if (meal.get("Status").getAsString().equals("Closed")) {
             continue;
         } else {
             JsonArray stations = meal.getAsJsonArray("Stations");
-            for (JsonElement s : stations) {
+            for (JsonElement s : stations) {  // for each station
                 JsonObject station = s.getAsJsonObject();
-                IO.println("    " + station.get("Name").getAsString());
-                
                 JsonArray items = station.getAsJsonArray("Items");
-                for (JsonElement i : items) {
+                for (JsonElement i : items) {  // for each item at a station
                     JsonObject item = i.getAsJsonObject();
                     String name = item.get("Name").getAsString();
                     String id = item.get("ID").getAsString();
-                    IO.println("        " + name + " " + id);
+                    HttpRequest request1 = HttpRequest.newBuilder()
+                        .uri(URI.create("https://api.hfs.purdue.edu/menus/v2/items/" + id))
+                        .GET()
+                        .build();
+
+                    HttpResponse<String> ingList = null;
+                    try {
+                        ingList =
+                            client.send(request1, HttpResponse.BodyHandlers.ofString());
+                    } catch (Exception e) {
+                        IO.println("Unable to connect with API");
+                        return;
+                    }
+                    if (ingList.statusCode() != 200) {
+                        IO.println("Status code: " + ingList.statusCode());
+                        return;
+                    }
+                    
+                    JsonObject list = JsonParser.parseString(ingList.body()).getAsJsonObject();
+                    if (list.get("Ingredients") == null) {
+                        IO.println("Null");
+                        continue;
+                    }
+                    String ingredients = list.get("Ingredients").getAsString();
+                    IO.println(ingredients);
                 }
             }
         }
